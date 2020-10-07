@@ -1,0 +1,1 @@
+# Telepítés és konfiguráció
