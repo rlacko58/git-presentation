@@ -2,9 +2,12 @@
 
 - Bevezető
 
-  - [Intro](intro/1_intro.md)
-  - [Verziókezelés](intro/2_versioning.md)
-  - [Git története](intro/3_history.md)
+  - [Intro](intro/1_intro.md?id=intro)
+  - [Verziókezelés](intro/2_versioning.md?id=verziókezelés)
+    - [Helyi](intro/2_versioning.md?id=helyi)
+    - [Központosított](intro/2_versioning.md?id=központosított)
+    - [Megosztott](intro/2_versioning.md?id=megosztott)
+  - [Git története](intro/3_history.md?id=git-története)
 
 - Git használata
 
