@@ -46,10 +46,9 @@ Persze az operációs rendszer képes dátum alapján rendezni,
 el is szeretnénk küldeni? Mi van ha a módosítás dátuma közben
 módosul? Hogyan biztosítjuk, hogy közben nem sérülnek a fájlok?
 
-Ezekre adnak megoldást a különböző verziókezelő rendszerek.  
-Ezeknek egy dolguk van, fájljaink számon tartása, mint amit
-kézileg elvégeztünk. Továbbá arra is lehetőséget ad, hogy
-ha valamit kitörlünk, azt visszanyerhessük.
+Ezekre megoldást adnak a különböző verziókezelő rendszerek.  
+Többek közt dolguk, hogy fájljaink számon tartsák, ahogy például
+kézileg tettük.
 
 ### Milyen verzió kezelő rendszereink lehetnek?
 
