@@ -408,4 +408,51 @@ Most meg már látszik, hogy csak átnevezés történt?
 A Git képes rá, hogy felismerje a fájlokat és eldöntse, hogy
 ugyanaz volt a kettő, tehát átnevezés történt.
 
+#### Mit csináltunk eddig?
+
+A Git egyik legjobb parancsa a `git log` a `git status` után és
+szeretném ha kipróbálnád.
+
+```
+commit 80560db1f5a83496b80f1959fbcbae2ccfff320e (HEAD -> master)
+Author: Rafael László <rlacko99 [AT] gmail.com>
+Date:   Thu Oct 8 21:07:25 2020 +0200
+
+    jegyzeteim ignorálása
+
+commit 30bf35d36399e484b03090570e13cb95da92ab8b
+Author: Rafael László <rlacko99 [AT] gmail.com>
+Date:   Thu Oct 8 20:11:58 2020 +0200
+
+    Hoztunk egy hordót
+
+commit b677a8639193479157f7a576dffe0186b0dbe2c8
+Author: Rafael László <rlacko99 [AT] gmail.com>
+Date:   Thu Oct 8 17:33:07 2020 +0200
+
+    Raktam bele egy körtét
+
+commit c45abc3d64c7840b4088b77d5a60d02198a78854
+Author: Rafael László <rlacko99 [AT] gmail.com>
+Date:   Thu Oct 8 17:19:28 2020 +0200
+
+    Készítettem egy gyümölcskosarat
+```
+
+Itt azt láthatjuk, hogy milyen mentéspontjaink vannak
+és a hozzájuk tartozó dolgokat, mint a commit hash vagy
+a hozzá tartozó üzenet.
+
+Picit tegyük szebbé. Adjuk ki az előző parancsot a
+`--graph --oneline` kapcsolókkal.
+
+```
+* 80560db (HEAD -> master) jegyzeteim ignorálása
+* 30bf35d Hoztunk egy hordót
+* b677a86 Raktam bele egy körtét
+* c45abc3 Készítettem egy gyümölcskosarat
+```
+
+Máris szebben néz ki :)
+
 [Előző](workshop/1_installation) | [Következő](workshop/3_branch)

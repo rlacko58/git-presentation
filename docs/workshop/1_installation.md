@@ -79,7 +79,7 @@ Nálam a konfig a home mappámban például így néz ki:
 ```
 $ cat ~/.gitconfig
 [user]
-        email = rlacko99@gmail.com
+        email = rlacko99 [AT] gmail.com
         name = Rafael László
 ```
 
@@ -91,7 +91,7 @@ Először is a saját adataink:
 
 ```
 $ git config --global user.name "John Doe"
-$ git config --global user.email johndoe@example.com
+$ git config --global user.email johndoe [AT] example.com
 ```
 
 ##### Szövegszerkesztő
@@ -116,7 +116,7 @@ Nézzük meg mik az összes beállításunk:
 
 ```
 $ git config --list
-user.email=rlacko99@gmail.com
+user.email=rlacko99 [AT] gmail.com
 user.name=Rafael László
 core.repositoryformatversion=0
 core.filemode=true
