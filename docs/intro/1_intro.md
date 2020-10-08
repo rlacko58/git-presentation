@@ -32,4 +32,4 @@ során nyugodtan keress meg
 - [Facebookon](https://www.facebook.com/rlacko58/)
 - [Githubon](https://github.com/rlacko58)
 
-<div style="text-align:center"><img src="intro/me.jpg" alt="Kép magamról" /></div>
+<div style="text-align:center"><img src="intro/img/me.jpg" alt="Kép magamról" /></div>
