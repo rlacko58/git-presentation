@@ -34,6 +34,4 @@ során nyugodtan keress meg
 
 <div style="text-align:center"><img src="intro/img/me.jpg" alt="Kép magamról" /></div>
 
-<div style="text-align:right"><img src="intro/img/me.jpg" alt="Kép magamról" /></div>
-
 [Következő](intro/2_versioning)
