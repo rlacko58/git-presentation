@@ -11,7 +11,8 @@
 
 - Git használata
 
-  - [Telepítés és konfiguráció](workshop/1_installation.md)
+  - [Telepítés és konfiguráció](workshop/1_installation.md?id=telepítés-és-konfiguráció)
+    - [Telepítés](workshop/1_installation.md?id=telepítés)
   - [Alapok](workshop/2_basics.md)
   - [Elágazás, "Branchelés"](workshop/3_branch.md)
 
