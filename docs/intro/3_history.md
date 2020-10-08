@@ -31,4 +31,4 @@ Ekkoriban
 Így hát megírta a [Git-et](https://en.wikipedia.org/wiki/Git), mely a mai napig a legelterjedtebb, leggyorsabb és
 legkényelmesebb verzió kezelő rendszerünk.
 
-[Előző](intro/2_versioning) | [Következő](remote/1_basics)
+[Előző](intro/2_versioning) | [Következő](workshop/1_installation)
