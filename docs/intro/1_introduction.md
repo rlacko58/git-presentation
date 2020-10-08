@@ -1,3 +1,0 @@
-# Bemutatkozás
-
-Rafael László
