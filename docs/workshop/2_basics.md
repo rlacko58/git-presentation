@@ -36,7 +36,7 @@ Action
 
 ```
 
-### Repository
+#### Repository
 
 A Git repository egy olyan mappa, mely Git verziókezelés alatt
 áll.
@@ -107,7 +107,7 @@ Gyakorlatilag mikor egy távoli git repo-t leszedünk, akkor
 ezt a mappát kapjuk meg. Ebből ezután a git alkalmazásunk
 előállítja nekünk a master ág legutóbbi mentéspontját.
 
-#### Hogyan tárolódnak a mentéseink?
+#### Mentéseink tárolása
 
 Egy logikus megoldásnak tűnhet, hogy az egyes fájlok közt
 csak az eltéréseket tároljuk. Például:

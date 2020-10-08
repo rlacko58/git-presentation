@@ -14,7 +14,11 @@
   - [Telepítés és konfiguráció](workshop/1_installation.md?id=telepítés-és-konfiguráció)
     - [Telepítés](workshop/1_installation.md?id=telepítés)
     - [Konfiguráció](workshop/1_installation.md?id=konfiguráció)
-  - [Alapok](workshop/2_basics.md)
+  - [Alapok](workshop/2_basics.md?id=alapok)
+    - [Repository](workshop/2_basics.md?id=repository)
+    - [Mentéseink tárolása](workshop/2_basics.md?id=mentéseink-tárolása)
+    - [Változtatások mentése](workshop/2_basics.md?id=változtatások-mentése)
+    - [Fájlok mozgatása](workshop/2_basics.md?id=fájlok-mozgatása)
   - [Elágazás, "Branchelés"](workshop/3_branch.md)
 
 - Távoli Repository
