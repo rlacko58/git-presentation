@@ -19,7 +19,8 @@
     - [Mentéseink tárolása](workshop/2_basics.md?id=mentéseink-tárolása)
     - [Változtatások mentése](workshop/2_basics.md?id=változtatások-mentése)
     - [Fájlok mozgatása](workshop/2_basics.md?id=fájlok-mozgatása)
-  - [Elágazás, "Branchelés"](workshop/3_branch.md)
+    - [Mentési előzmények](workshop/2_basics.md?id=mentési-előzmények)
+  - [Branch-ek, elágazás](workshop/3_branch.md)
 
 - Távoli Repository
 

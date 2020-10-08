@@ -408,7 +408,7 @@ Most meg már látszik, hogy csak átnevezés történt?
 A Git képes rá, hogy felismerje a fájlokat és eldöntse, hogy
 ugyanaz volt a kettő, tehát átnevezés történt.
 
-#### Mit csináltunk eddig?
+#### Mentési előzmények
 
 A Git egyik legjobb parancsa a `git log` a `git status` után és
 szeretném ha kipróbálnád.
