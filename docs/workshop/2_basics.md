@@ -107,9 +107,73 @@ Gyakorlatilag mikor egy távoli git repo-t leszedünk, akkor
 ezt a mappát kapjuk meg. Ebből ezután a git alkalmazásunk
 előállítja nekünk a master ág legutóbbi mentéspontját.
 
+#### Hogyan tárolódnak a mentéseink?
+
+Egy logikus megoldásnak tűnhet, hogy az egyes fájlok közt
+csak az eltéréseket tároljuk. Például:
+
+```gyumolcskosar
+1. mentés:
+alma
+
+2. mentés:
+[1.mentés 1.sora]
+alma
+```
+
+Ez annyiból jó, hogy a tárhellyel spórol, viszont nem gyors.
+Képzeljünk el egy 1000 commit-ból álló repo-t.
+Mi történik mikor a legutóbbit lekérjük?
+
+Erre egyik megoldás más verziókezelőknél, hogy optimalizálnak
+és mondjuk 50 mentésenként csinálnak egy teljes mentést, stb.
+
+A Git ezt úgy oldja meg, hogy egy mentés az összes fájlt
+egy az egybe lemásolja.  
+Például egyik mentés alkalmával feltöltök egy 1gb-os videót,
+majd a következő mentéskor törlöm, akkor az a videó
+benne marad a git repo-ban.
+Persze utólag tudunk olyat, hogy kitöröljük az adott mentésből,
+de ez nem ajánlott használata a Git-nek.
+
+Oké, tehát például mappákba bemásolja a mentéseinket valamilyen
+módon, de mégis hova?
+
+```
+$ tree .git/objects/
+.git/objects/
+├── 13
+│   └── 46dac32baea8123272f60b6a04227fe3872bdb
+...
+├── e6
+│   └── 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+├── f4
+│   └── 5a6ff55496414b573e97064e998f065182eeee
+├── info
+└── pack
+```
+
+Mégis mik ezek?  
+A Git tömörítve és titkosítottan hashelve tárolja a fájlokat.
+A hashelésnek annyi a lényege, hogy a fájl teljes tartalmán
+átfuttatunk egy algoritmust, mely ezután kiköp egy 0-9a-z
+szöveget és ha akár 1 bit-et is változtatunk egy fájlon, akkor
+más lesz a hash-e, sőt a titkosítás miatt még feltörni is
+lehetetlen.  
+Tehát ha valaki elcommitol valamit, akkor azt már más nem tudja
+megváltoztatni anélkül, hogy változna a hash.
+Így tudjuk biztosítani a teljes konzisztenciát az elosztott
+repo-k között.
+
+Hash-t láthatunk például a mentéspontjainkon, fájljainkon, stb.
+
+Ennél jobban nem megyek bele a témába, de érdekes olvasmány.
+A lényeg, hogy mindenhol ott vannak a hash-ek, és erre mindjárt
+látunk példát.
+
 #### Változtatások mentése
 
-Na de hogyan mentünk ebbe az adatbázisba?
+Na de hogyan készítünk ilyen mentéseket?
 
 A fájljainknak különböző állapotai létezhetnek egy
 repo-ban.
@@ -277,6 +341,71 @@ $ git add gyumolcskosar
 $ git commit -m "Raktam bele egy körtét"
 ```
 
-#### Hogyan tárolódnak a mentéseink?
+Készítsünk egy új fájlt `hordo` néven és nézzük mit ír ki
+a `git status -s` parancs.
+
+```
+$ git status -s
+?? hordo
+```
+
+Ezzel a kapcsolóval képesek vagyunk egy rövidített státuszt
+lekérni. Stageljük majd pedig commitoljuk el
+`"Hoztunk egy hordót"` üzenettel. A lépések közt nézzük meg
+mit ír ki a `git status -s`.
+
+Mi van akkor, ha valami fájlt nem szeretnénk verziókontroll
+alá tenni? Gondolok például a build-ek mappáira vagy
+adott Eszköz által generált fájlokra?
+
+Hozzunk létre egy `.gitignore` fájlt és egy `jegyzeteim.txt`
+fájlt.
+Ezután adjuk ki a `git status` parancsot.
+Láthatjuk, hogy a `jegyzeteim` fájl nem jelent meg, tehát
+ignoráljuk a fájlt. Stage-ljük, majd mentsük el a fájlt a
+`git add .`, `git commit -m "jegyzeteim ignorálása"`
+
+#### Fájlok mozgatása
+
+A git semmi adatot nem tárol változásokról, csak
+mentéseket készít, ahogy említettem az előző részben.
+Próbáljuk ki, hogy mi történik ha átnevezünk egy fájlt?
+
+```
+mv gyumolcskosar gyumolcskosar.txt
+```
+
+```
+git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    gyumolcskosar
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	gyumolcskosar.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Látható, hogy az eredeti fájlt "töröltük" és egy új
+fájlt vettünk fel a repo-ba. Érdekes, mi lenne ha stagelnénk
+a változtatásokat?
+
+```
+$ git add .
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	renamed:    gyumolcskosar -> gyumolcskosar.txt
+```
+
+Most meg már látszik, hogy csak átnevezés történt?
+
+A Git képes rá, hogy felismerje a fájlokat és eldöntse, hogy
+ugyanaz volt a kettő, tehát átnevezés történt.
 
 [Előző](workshop/1_installation) | [Következő](workshop/3_branch)
