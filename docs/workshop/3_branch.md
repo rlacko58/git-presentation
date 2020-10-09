@@ -249,4 +249,230 @@ $ git log --graph --oneline --all
 * 80560db jegyzeteim ignorálása
 ```
 
-[Előző](workshop/2_basics) | [Következő](remote/1_basics)
+#### Mergelés
+
+Az egyik legfontosabb dolog az ágak létrehozása után, hogy
+betudjuk olvasztani az águnk valahova.
+Az lenne a feladat, hogy a `master`-re beillesszük az
+`atnevezes` ágon végzett módosításaink.  
+Ehhez a `git merge <branch neve>` parancsot használhatjuk.
+A lényege, hogy ez a parancs azt az ágat amit kiválasztottunk
+megpróbálja beolvasztani oda ahol épp a `HEAD` mutatónk van.
+
+Gyerünk is át a `master` ágra.
+
+```
+$ git checkout master
+Switched to branch 'master'
+```
+
+Ezután pedig mergeljük át a `master`-re az `atnevezes` ágat.
+
+```
+git merge atnevezes
+```
+
+Ekkor meg fog nyílni a szövegszerkesztőnk, ugyanis egy
+új mentéspontot fogunk készíteni a `master águnkra`.
+A feladott merge üzeneten nem kell módosítanünk, teljesen
+jó úgy.
+
+A merge lefut és láthatjuk mi is történt:
+
+```
+$ git merge atnevezes
+Removing hordo
+Merge made by the 'recursive' strategy.
+ gyumolcskosar => gyumolcskosar.txt | 0
+ hordo => hordo.txt                 | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ rename gyumolcskosar => gyumolcskosar.txt (100%)
+ rename hordo => hordo.txt (100%)
+```
+
+Most egy újabb `git log`-al ezt láthatjuk:
+
+```
+*   366140d (HEAD -> master) Merge branch 'atnevezes'
+|\
+| * 9dcfc79 (atnevezes) Adtam kiterjesztést a hordónak
+| * 7de1c94 Hozzáadtam a txt kiterjesztést a gyümölcskosar fájlhoz
+* | 15719cf Tettem a kosaramba szőlőt
+|/
+* 80560db jegyzeteim ignorálása
+* 30bf35d Hoztunk egy hordót
+```
+
+Ez a bizonyos `merge commit` egyszerre mutat a két ág
+tartalmára.
+
+#### Merge conlict
+
+Mi van akkor ha ketten egyszerre ugyanazt változtatjuk?  
+Úgy döntöttünk, hogy pálinkát szeretnénk főzni józsival,
+szóval a hordóba teszünk ízlés szerint valami
+gyümölcsöt.
+Gyerünk át a saját águnkra, de egy paranccsal.
+Ezt a `-b` kapcsolóval tudjuk
+elérni a `git checkout` mellett.
+
+```
+$ git checkout -b lacko
+```
+
+Most egy újabb `git branch` kiadásával már látható, hogy
+3 ággal rendelkezünk.
+
+```
+  atnevezes
+* lacko
+  master
+```
+
+Tegyünk bele a `hordo.txt`-be egy nekünk tetsző gyümölcsöt.
+
+```gyumolcs.txt
+korte
+```
+
+Ezt mentsük is el, de most picit csaljunk és ne rakjuk
+`staged`-be, hanem azonnal mentsük el `-a` kapcsolót használva.
+
+```
+$ git commit -a -m "Raktam a hordóba körtét"
+```
+
+Úgy döntöttünk a szomszéd Józsi, hogy ugyanebbe a hordóba
+körtét szeretne rakni. Menjünk át a master ágra és
+tegyük meg ott.
+
+Azt mondta a szomszéd, hogy szilvát szeretne beletenni, szóval:
+
+```hordo.txt
+szilva
+```
+
+Ezt is mentsük el.
+
+```
+$ git commit -a -m "Raktam szilvát a hordóba"
+```
+
+Most ha megnézzük a gráfunkat újra, akkor láthatjuk is,
+hogy mi a helyzet:
+
+```
+$ git log --graph --oneline --all
+
+* 41f1c05 (HEAD -> master) Raktam szilvát a hordóba
+| * 6d6d1ac (lacko) Raktam a hordóba körtét
+|/
+*   366140d Merge branch 'atnevezes'
+|\
+| * 9dcfc79 (atnevezes) Adtam kiterjesztést a hordónak
+| * 7de1c94 Hozzáadtam a txt kiterjesztést a gyümölcskosar fájlhoz
+* | 15719cf Tettem a kosaramba szőlőt
+|/
+* 80560db jegyzeteim ignorálása
+* 30bf35d Hoztunk egy hordót
+...
+```
+
+Na és akkor most mergeljünk be a master-re a módosításaink.
+
+```
+$ git merge lacko
+Auto-merging hordo.txt
+CONFLICT (content): Merge conflict in hordo.txt
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+Oh! Merge conlict keletkezett.  
+Nem kell megijedni, nem a világ vége és a git segít ahol tud.
+
+Az a helyzet, hogy egyszerre ugyanazt a sort módosítottuk és a git nem tudta
+eldönteni mit tegyen. Megtartsa az egyiket vagy mindkettőt? Mégis mi legyen?
+
+Ezeket a kérdéseket nekünk kell megválaszolnunk.
+
+Először nézzük meg, mit a státusz.
+
+```
+$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   hordo.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Az van, hogy ilyenkor a git beírja a fájlunkba mind a két branch változásait
+és utána azt várja tőlünk, hogy átalakítsuk a fájlt, majd pedig azt elmentsük.
+Szóval nem kell megijedni, csak átírjuk mi kell nekünk és mentünk egyet.
+
+Nézzük meg mi van a fájlunkban.
+
+```hordo.txt
+<<<<<<< HEAD
+szilva
+=======
+korte
+>>>>>> lacko
+```
+
+Mit is jelent ez? Ketté szedte az bejövő adatokat a git arra ahová mergeltünk
+(`HEAD`) és amit mergeltünk (`lacko`). Köztük pedig egy sor "======="-t láthatunk.
+Itt már csak átírjuk a fájlt ahogy szeretnénk, hogy kinézzen.
+
+```hordo.txt
+korte
+```
+
+Nézzük meg mi a státusz ezután:
+
+```
+git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   hordo.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Továbbra is azt írja, amit az imént. Amíg nem commitoljuk a módosításunk,
+addig ezt is fogja. Hát akkor mentsünk.
+
+```
+git commit -a -m "lacko branch mergelve és konflikt megoldva"
+```
+
+Nézzük meg hogy néz ki a gráfunk ezután.
+
+```
+*   7341274 (HEAD -> master) lacko branch mergelve és konflikt megoldva
+|\
+| * 6d6d1ac (lacko) Raktam a hordóba körtét
+* | 41f1c05 Raktam szilvát a hordóba
+|/
+*   366140d Merge branch 'atnevezes'
+...
+```
+
+Tehát most a merge commitunk egyben a konfliktusok megoldását is tartalmazza.
+Nem elképesztő? Innentől már csak együtt kell dolgozni, margeknél a konfliktusokat
+megoldani.
+
+Semmi extra effortot nem fog igényelni egy hasonló elvégzése.
+
+[Előző](workshop/2_basics?id=alapok) |
+[Következő](remote/1_basics)
