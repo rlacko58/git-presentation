@@ -168,6 +168,11 @@ repo-k között.
 
 Hash-t láthatunk például a mentéspontjainkon, fájljainkon, stb.
 
+Például itt egy ábra, hogy hogyan társítja a git egy
+commit-hoz a megfelelő fájlokat egy kis pointer mágia keretében.
+
+<div style="text-align:center"><img src="workshop/img/commit-and-tree.png" alt="Commit and Tree" /></div>
+
 Ennél jobban nem megyek bele a témába, de érdekes olvasmány.
 
 #### Változtatások mentése
