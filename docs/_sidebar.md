@@ -20,7 +20,12 @@
     - [Változtatások mentése](workshop/2_basics.md?id=változtatások-mentése)
     - [Fájlok mozgatása](workshop/2_basics.md?id=fájlok-mozgatása)
     - [Mentési előzmények](workshop/2_basics.md?id=mentési-előzmények)
-  - [Branch-ek, elágazás](workshop/3_branch.md)
+  - [Branch-ek, elágazás](workshop/3_branch.md?id=branch-ek-elágazás)
+    - [Mik azok a branch-ek?](workshop/3_branch.md?id=mik-azok-a-branch-ek)
+    - [Hogy épül fel?](workshop/3_branch.md?id=hogy-épül-fel)
+    - [Ágak közti mozgás](workshop/3_branch.md?id=Ágak-közti-mozgás)
+    - [Mergelés](workshop/3_branch.md?id=mergelés)
+    - [Merge conflict](workshop/3_branch.md?id=merge-conlict)
 
 - Távoli Repository
 
