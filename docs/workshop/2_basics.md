@@ -183,7 +183,7 @@ Date:   Thu Oct 8 17:19:28 2020 +0200
 ```
 
 Van egy commit-nak `commit hash`-e, `készítője`,
-`létrehozási dátumja`, és `commit üzenete`
+`létrehozási dátuma`, és `commit üzenete`
 
 Na de hogyan készítünk egy mentéspontot?
 
