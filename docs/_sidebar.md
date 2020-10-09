@@ -29,7 +29,12 @@
 
 - Távoli Repository
 
-  - [Alapok, SSH kulcs](remote/1_basics.md)
+  - [Alapok és SSH kulcs](remote/1_basics.md)
+    - [Alapok](remote/1_basics.md?id=alapok)
+    - [SSH](remote/1_basics.md?id=ssh)
+    - [Saját SSH kulcs](remote/1_basics.md?id=saját-ssh-kulcs)
+      - [Linuxon / MacOS-en](remote/1_basics.md?id=linuxon-macos-en)
+      - [Windowson](remote/1_basics.md?id=windowson)
   - [Github](remote/2_github.md)
   - [Issue, merge request, Fork](remote/3_issue_merge_fork.md)
 

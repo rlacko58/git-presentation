@@ -475,4 +475,4 @@ megoldani.
 Semmi extra effortot nem fog igényelni egy hasonló elvégzése.
 
 [Előző](workshop/2_basics?id=alapok) |
-[Következő](remote/1_basics)
+[Következő](remote/1_basics?id=alapok-és-ssh-kulcs)

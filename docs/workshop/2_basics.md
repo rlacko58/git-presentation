@@ -487,4 +487,4 @@ Elég csak pár karakter, hogy beazonosítsunk
 például egy commitot a hash-ével.
 
 [Előző](workshop/1_installation?id=telepítés-és-konfiguráció) |
-[Következő](workshop/3_branch)
+[Következő](workshop/3_branch?id=branch-ek-elágazás)
