@@ -19,7 +19,7 @@ $ git help config
 De ha csak egy gyors áttekintésre van szükséged:
 
 ```
-\$ git config -h
+$ git config -h
 usage: git config [<options>]
 
 Config file location
@@ -40,10 +40,10 @@ Action
 
 A Git repository egy olyan mappa, mely Git verziókezelés alatt
 áll.
-Például az a mappa, ahol van egy .git mappa, az egy git repo.
+Tehát az a mappa, ahol van egy .git mappa, az egy git repo.
 
 ```
-\$ ls -al
+$ ls -al
 total 20
 drwxrwxr-x 4 rlacko rlacko 4096 okt 8 12:59 .
 drwxrwxr-x 3 rlacko rlacko 4096 okt 7 12:04 ..
@@ -63,19 +63,20 @@ $ cd projektem
 
 ```
 
-Nézzük meg, hogy mi a helyzet a git-el ezzel a mappában.  
+Nézzük meg, hogy mi a helyzet a git-el.  
 Ehhez a `git status` parancsot tudjuk használni.
 Ez a parancs a jelenlegi git repo-nkról képes
 információkat kiírni.
 
 ```
-\$ git status
+$ git status
 fatal: not a git repository (or any of the parent directories): .git
 
 ```
 
 Teljesen üres a mappa, még nincs verzió kontroll alatt.
-`ls -al` -el tudjuk is ellenőrizni.
+`ls -al` -el tudjuk is ellenőrizni, hogy nincsen `.git`
+mappa.
 
 Tegyük verziókontroll alá a `git init` paranccsal.
 Ez beállítja nekünk a `master` branchet és más alap dolgokat.
@@ -86,7 +87,7 @@ egy fa ága.
 <div style="text-align:center"><img src="workshop/img/basic-branching.png" alt="Git branch" /></div>
 
 ```
-\$ git init .
+$ git init .
 Initialized empty Git repository in .../projektem/.git/
 
 ```
@@ -94,7 +95,7 @@ Initialized empty Git repository in .../projektem/.git/
 Ha megnézzük, mostmár van egy .git mappánk
 
 ```
-\$ ls -al
+$ ls -al
 total 12
 drwxrwxr-x 3 rlacko rlacko 4096 okt 8 16:52 .
 drwxrwxr-x 12 rlacko rlacko 4096 okt 8 16:49 ..
@@ -131,10 +132,11 @@ Erre egyik megoldás más verziókezelőknél, hogy optimalizálnak
 A Git ezt úgy oldja meg, hogy egy mentés az összes fájlt
 egy az egybe lemásolja.  
 Például egyik mentés alkalmával feltöltök egy 1gb-os videót,
-majd a következő mentéskor törlöm, akkor az a videó
-benne marad a git repo-ban.
-Persze utólag tudunk olyat, hogy kitöröljük az adott mentésből,
-de ez nem ajánlott használata a Git-nek.
+majd a következő mentéskor pár bitet átírok, akkor már
+2gb-nyi videó lesz a repóban és ha utána egy másik mentésel
+ki is töröljük, az attól még megmarad.
+Persze utólag tudunk olyat, hogy visszmegyünk és kitöröljük
+az adott mentésből, de ez nem ajánlott használata a Git-nek.
 
 Oké, tehát például mappákba bemásolja a mentéseinket valamilyen
 módon, de mégis hova?
@@ -154,12 +156,11 @@ $ tree .git/objects/
 ```
 
 Mégis mik ezek?  
-A Git tömörítve és titkosítottan hashelve tárolja a fájlokat.
+A Git tömörítve és hashelve tárolja a fájlokat.
 A hashelésnek annyi a lényege, hogy a fájl teljes tartalmán
 átfuttatunk egy algoritmust, mely ezután kiköp egy 0-9a-z
 szöveget és ha akár 1 bit-et is változtatunk egy fájlon, akkor
-más lesz a hash-e, sőt a titkosítás miatt még feltörni is
-lehetetlen.  
+más lesz a hash-e.  
 Tehát ha valaki elcommitol valamit, akkor azt már más nem tudja
 megváltoztatni anélkül, hogy változna a hash.
 Így tudjuk biztosítani a teljes konzisztenciát az elosztott
@@ -168,12 +169,23 @@ repo-k között.
 Hash-t láthatunk például a mentéspontjainkon, fájljainkon, stb.
 
 Ennél jobban nem megyek bele a témába, de érdekes olvasmány.
-A lényeg, hogy mindenhol ott vannak a hash-ek, és erre mindjárt
-látunk példát.
 
 #### Változtatások mentése
 
-Na de hogyan készítünk ilyen mentéseket?
+Hogyan néz ki egy mentés?
+
+```
+commit c45abc3d64c7840b4088b77d5a60d02198a78854
+Author: Rafael László <rlacko99 [AT] gmail.com>
+Date:   Thu Oct 8 17:19:28 2020 +0200
+
+    Készítettem egy gyümölcskosarat
+```
+
+Van egy commit-nak `commit hash`-e, `készítője`,
+`létrehozási dátumja`, és `commit üzenete`
+
+Na de hogyan készítünk egy mentéspontot?
 
 A fájljainknak különböző állapotai létezhetnek egy
 repo-ban.
@@ -187,23 +199,22 @@ repo-ban.
 
 Nézzük meg ezen az ábrán és egy példa projekten keresztül:
 
-<div style="text-align:center"><img src="workshop/img/git_lifecycle.png" alt="Local Version Control Systems" /></div>
+<div style="text-align:center"><img src="workshop/img/git_lifecycle.png" alt="Git Life cycle" /></div>
 
-Mi a jelenlegi helyzet a repo-ban, miután inicializáltuk?
+Mi a jelenlegi helyzet a frissen inicializált repo-ban?
 
 ```
-\$ git status
+$ git status
 On branch master
 No commits yet
 nothing to commit (create/copy files and use "git add" to track)
 ```
 
-Láthatjuk, hogy még nincsenek mentéspontjaink és nincs mit
+Láthatjuk, hogy még nincsenek mentéspontjaink, nincs mit
 elmentenünk és egyben a git próbál segíteni, hogy hogyan
 tudunk stagelni valamit.
 Ezt több helyen is megfigyelhetjük a git-ben.
-Próbál segíteni ahol csak tud, minél kényelmesebbé téve
-a munkánkat.
+Próbál segíteni ahol csak tud.
 
 Vegyünk fel egy új fájlt.
 
@@ -214,13 +225,13 @@ echo 'alma' > gyumolcskosar
 _Itt az `echo` egy olyan parancs volt, mely kiírta nekünk a
 terminálra azt, hogy "alma", de átirányítottuk egy fájlba
 a `>` operátorral és mivel nem létezett a fájl, azt létre is
-hozta._
+hozta._ - Linux magic #01
 
 Újra megvizsgálva a status-t, látni fogjuk, hogy megjelent, de
 még nincs verziókontroll alatt.
 
 ```
-\$ git status
+$ git status
 ...
 Untracked files:
 (use "git add <file>..." to include in what will be committed)
@@ -233,23 +244,23 @@ Ahhoz, hogy git alá helyezzük, a `git add <fájl>` parancsot
 fogjuk kiadni.
 _Ezek a parancsok mind képesek rá, hogy
 Unix-os módon több fájlra is kiadhatóak legyenek.
-Például a `<fájl>` lehet `*.jpg`amivel minden .jpg fájlt kijelölünk a jelenlegi mappában"_
+Például a `<fájl>` lehet `*.jpg`amivel minden .jpg fájlt kijelölünk a jelenlegi mappában"_ - Linux magic #02
 
 ```
-\$ git add gyumolcskosar
+$ git add gyumolcskosar
 ```
 
 Ezután megjelenik, mint új fájl a git adatbázisában.
 
 ```
-\$ git status
+$ git status
 ...
 Changes to be committed:
 (use "git rm --cached <file>..." to unstage)
 new file: gyumolcskosar
 ```
 
-A fájlunk átkerült staged módba és ezt akár mostmár el is
+A fájlunk átkerült staged módba és ezt akár el is
 tudjuk menteni.
 A mentéshez a `git commit` parancsot tudjuk
 használni.
@@ -276,7 +287,7 @@ A # -el kezdődő sorok kommentek, ezek nem fognak a commit
 majd mentsük el a fájlt és zárjuk be a szövegszerkesztőt.
 
 ```
-\$ git commit
+$ git commit
 [master (root-commit) c45abc3] Készítettem egy gyümölcskosarat
 1 file changed, 1 insertion(+)
 create mode 100644 gyumolcskosar
@@ -291,7 +302,7 @@ Továbbá megjelent pár további hasznos információ is.
 Ismételten nézzük meg mi a helyzet a reponkban:
 
 ```
-\$ git status
+$ git status
 On branch master
 nothing to commit, working tree clean
 ```
@@ -327,7 +338,7 @@ parancsnak áttudunk adni úgynevezett kapcsolókat.
 Például `git commit -m <message>`.
 Ez annyit spórol meg nekünk, hogy nem kell szövegszerkesztőt
 megnyitnia a git-nek mikor új commit-ot készítünk,
-hanem átraktuk a parancsot olyan módba,
+hanem átrakjuk a parancsot olyan módba,
 hogy várjon egy szöveget, mint mentéshez kapcsolódó üzenet.
 Általában logikusak az egy betűs rövidítések:  
 `-m: message, -a: all`, de tudunk hosszabb verziókat is
@@ -356,19 +367,29 @@ mit ír ki a `git status -s`.
 
 Mi van akkor, ha valami fájlt nem szeretnénk verziókontroll
 alá tenni? Gondolok például a build-ek mappáira vagy
-adott Eszköz által generált fájlokra?
+egy IDE által generált fájlokra.
 
 Hozzunk létre egy `.gitignore` fájlt és egy `jegyzeteim.txt`
 fájlt.
 Ezután adjuk ki a `git status` parancsot.
-Láthatjuk, hogy a `jegyzeteim` fájl nem jelent meg, tehát
-ignoráljuk a fájlt. Stage-ljük, majd mentsük el a fájlt a
+Láthatjuk, hogy a `jegyzeteim` fájl megjelent.
+
+Most írjuk be a fájl nevét a `.gitignore`-ba.
+
+```.gitignore
+jegyzeteim.txt
+```
+
+Ezt követően adjuk ki újra a `git status` parancsot.  
+Oh, eltünt a fájlunk! Pont ezt akartuk, mostmár nem fogja
+figyelni a git ha ilyen fájlt készítünk.
+Mostmár csak stageljük és mentsük el az új fájlunk.  
 `git add .`, `git commit -m "jegyzeteim ignorálása"`
 
 #### Fájlok mozgatása
 
 A git semmi adatot nem tárol változásokról, csak
-mentéseket készít, ahogy említettem az előző részben.
+mentéseket készít, ahogy említettem.
 Próbáljuk ki, hogy mi történik ha átnevezünk egy fájlt?
 
 ```
@@ -392,7 +413,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 Látható, hogy az eredeti fájlt "töröltük" és egy új
 fájlt vettünk fel a repo-ba. Érdekes, mi lenne ha stagelnénk
-a változtatásokat?
+a változtatásokat `git add .` -al?
 
 ```
 $ git add .
@@ -406,7 +427,9 @@ Changes to be committed:
 Most meg már látszik, hogy csak átnevezés történt?
 
 A Git képes rá, hogy felismerje a fájlokat és eldöntse, hogy
-ugyanaz volt a kettő, tehát átnevezés történt.
+ugyanaz volt a kettő, tehát átnevezés, mozgatás, stb. történt.
+De nem tudja követni a fájlt, csak látja, hogy jött egy új
+fájl ami szinte ugyanaz, mint ami törölve lett nemrég.
 
 #### Mentési előzmények
 
@@ -441,18 +464,21 @@ Date:   Thu Oct 8 17:19:28 2020 +0200
 
 Itt azt láthatjuk, hogy milyen mentéspontjaink vannak
 és a hozzájuk tartozó dolgokat, mint a commit hash vagy
-a hozzá tartozó üzenet.
+a üzenet.
 
 Picit tegyük szebbé. Adjuk ki az előző parancsot a
-`--graph --oneline` kapcsolókkal.
+`--oneline` kapcsolóval.
 
 ```
-* 80560db (HEAD -> master) jegyzeteim ignorálása
-* 30bf35d Hoztunk egy hordót
-* b677a86 Raktam bele egy körtét
-* c45abc3 Készítettem egy gyümölcskosarat
+80560db (HEAD -> master) jegyzeteim ignorálása
+30bf35d Hoztunk egy hordót
+b677a86 Raktam bele egy körtét
+c45abc3 Készítettem egy gyümölcskosarat
 ```
 
-Máris szebben néz ki :)
+Máris csak a lényeget látjuk. Az is látható, hogy csak 7
+karaktert kaptunk a hashből.
+Elég csak pár karakter, hogy beazonosítsunk
+például egy commitot a hash-ével.
 
 [Előző](workshop/1_installation) | [Következő](workshop/3_branch)
