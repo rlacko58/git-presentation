@@ -93,4 +93,5 @@ küldeni és a szoftver automatikusan megcsinálja a többi a mi részünkön.
 
 <div style="text-align:center"><img src="intro/img/vcstype_distributed.png" alt="Distributed Version Control Systems" /></div>
 
-[Előző](intro/1_intro) | [Következő](intro/3_history)
+[Előző](intro/1_intro?id=intro) |
+[Következő](intro/3_history?id=git-története)

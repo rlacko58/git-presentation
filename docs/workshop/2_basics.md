@@ -481,4 +481,5 @@ karaktert kaptunk a hashből.
 Elég csak pár karakter, hogy beazonosítsunk
 például egy commitot a hash-ével.
 
-[Előző](workshop/1_installation) | [Következő](workshop/3_branch)
+[Előző](workshop/1_installation?id=telepítés-és-konfiguráció) |
+[Következő](workshop/3_branch)

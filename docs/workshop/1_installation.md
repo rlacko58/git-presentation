@@ -132,4 +132,5 @@ $ git config user.name
 Rafael László
 ```
 
-[Előző](intro/3_history) | [Következő](workshop/2_basics)
+[Előző](intro/3_history?id=git-története) |
+[Következő](workshop/2_basics?id=alapok)
