@@ -120,5 +120,4 @@ A publikus kulcs helye: `~/ssh/id_rsa.pub`
 
 Forrás: [docs.github.com](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
-[Előző](workshop/3_branch?id=branch-ek-elágazás) |
-[Következő](remote/2_github)
+[Előző](workshop/3_branch?id=branch-ek-elágazás)
