@@ -136,7 +136,7 @@ majd a következő mentéskor pár bitet átírok, akkor már
 2gb-nyi videó lesz a repóban és ha utána egy másik mentésel
 ki is töröljük, az attól még megmarad.
 Persze utólag tudunk olyat, hogy visszmegyünk és kitöröljük
-az adott mentésből, de ez nem ajánlott használata a Git-nek.
+az adott mentésből.
 
 Oké, tehát például mappákba bemásolja a mentéseinket valamilyen
 módon, de mégis hova?

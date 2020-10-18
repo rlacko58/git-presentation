@@ -12,7 +12,7 @@ Ja és előre is bocsi a helyesírási hibákért, várom majd
 a javításokat a dokumentáció [git repo-jába](https://github.com/rlacko58/gitPresentation) :)
 
 Amire szükséged lesz: Egy konzol működő git-el ([Workshop elején](workshop/1_installation.md)
-közösen feltelepítjük)
+van egy útmutató)
 
 ## Tippek
 
@@ -24,7 +24,13 @@ belefektett munkát.
 
 ## Ki vagyok én?
 
-Rafael László, harmadéves mérnökinformatikus szoftverjlesztő speces hallgató. Jelenleg a DevTeam körvezetője, de a KSZK többi körében is aktívan tevékenykedem. Jelenleg főleg webfejlesztéssel foglalkozom, olyan projekteken dolgoztam, mint az AdminSCH vagy a KSZK Újonc weboldala.  
+Rafael László (Lackó), harmadéves mérnökinformatikus
+szoftverjlesztő speces hallgató.
+Jelenleg a DevTeam körvezetője, de a KSZK többi körében
+is aktívan tevékenykedem.
+Manapság főleg webfejlesztéssel foglalkozom,
+olyan projekteken dolgoztam, mint az AdminSCH
+vagy a KSZK Újonc weboldala.  
 Ha bármi kérdésed merülne fel a doksi olvasása vagy az előadás
 során nyugodtan keress meg
 

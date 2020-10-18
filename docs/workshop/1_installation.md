@@ -112,7 +112,7 @@ $ git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -m
 
 ##### Jelenlegi konfig
 
-Nézzük meg mik az összes beállításunk:
+Nézzük meg az összes beállításunk:
 
 ```
 $ git config --list

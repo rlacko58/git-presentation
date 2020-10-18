@@ -1,9 +1,9 @@
 # Verziókezelés
 
 Mi is az a verzió kezelés?  
-Talán a legegyszerűbb egy példán keresztül szemléltetni.
-Tegyük fel egy docx fájlt szerkesztünk és ezt hetente frissítve
-rendszeresen el kell küldenünk emailben valakinek.
+Talán a legegyszerűbb egy példán keresztül szemléltetni.  
+Tegyük fel egy docx fájlt szerkesztünk és ezt hetente
+frissítve rendszeresen el kell küldenünk emailben valakinek.
 Ilyenkor különböző verziók keletkeznek a fájlból és ezeket
 a postafiókunkból könnyedén előtudjuk szedni.
 
@@ -12,33 +12,33 @@ Mi van ha lokális kezdjük ezeket a fájlokat tárolni?
 Gondolom mindenki találkozott már hasonló fájlnevekkel:
 
 ```
-elso_beadasom.docx
-masodik_beadasom.docx
-masodik_beadasom (1).docx
-masodik_beadasom (1) Javított.docx
-masodik_beadasom (1) Javított másolata.docx
-asd.docx
-asdasd.docx
-asdasdasdasd.docx
+├── elso_beadasom.docx
+├── masodik_beadasom.docx
+├── masodik_beadasom (1).docx
+├── masodik_beadasom (1) Javított.docx
+├── masodik_beadasom (1) Javított másolata.docx
+├── asd.docx
+├── asdasd.docx
+└── asdasdasdasd.docx
 ```
 
 Ha ügyesek vagyunk még mappákat is készítünk és dátumot is hozzá cimkézünk.
 
 ```
-2020/
-  09/
-    13/
-      elso_beadasom.docx
-    19/
-      masodik_beadasom_felkesz.docx
-    20/
-      masodik_beadasom.docx
-      masodik_beadasom_javitott.docx
-      masodik_beadasom_vegleges.docx
-    ideiglenes/
-      asd.docx
-      asdasd.docx
-      asdasdadsads.docx
+└── 2020
+    └── 09
+        ├── 13
+        │   └── elso_beadasom.docx
+        ├── 19
+        │   └── masodik_beadasom_felkesz.docx
+        ├── 20
+        │   ├── masodik_beadasom.docx
+        │   ├── masodik_beadasom_javitott.docx
+        │   └── masodik_beadasom_vegleges.docx
+        └── ideiglenes
+            ├── asd.docx
+            ├── asdasd.docx
+            └── asdasdadsads.docx
 ```
 
 Persze az operációs rendszer képes dátum alapján rendezni,
@@ -79,15 +79,16 @@ hozzá és nem felülírjuk a módosításaink.
 
 ### Megosztott
 
-Na és itt lépünk be ma is használt Git világába.
+Na és itt lépünk be a ma is használt Git világába.
 Ennél a megoldásnál már az a trükk, hogy mindenkinek meg van
 a teljes projekt az összes verziójával. Felmerül, hogy na
 de akkor honnan szedjük le a legújabb verziót?
 Különböző megoldások léteznek, például a fejlesztők a
-módosításokat azonnal megosztják egymással (pl.: p2p Torrenthez hasonló módon) vagy
-kijelölnek egy központi szervert amivel mindenki szinkronban
-van.
-Ilyen például a Github vagy a Gitlab.  
+módosításokat azonnal megosztják egymással
+(pl.: p2p Torrenthez hasonló módon) vagy
+kijelölnek egy központi szervert amivel mindenki
+szinkronban van.
+Ilyen központi szerver lehet például a Github vagy a Gitlab.  
 Csak megjegyzem, de akár a módosításokat Emailben is ellehet
 küldeni és a szoftver automatikusan megcsinálja a többi a mi részünkön.
 
