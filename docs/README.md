@@ -20,13 +20,21 @@
     - [Változtatások mentése](workshop/2_basics.md?id=változtatások-mentése)
     - [Fájlok mozgatása](workshop/2_basics.md?id=fájlok-mozgatása)
     - [Mentési előzmények](workshop/2_basics.md?id=mentési-előzmények)
-  - [Branch-ek, elágazás](workshop/3_branch.md)
+  - [Branch-ek, elágazás](workshop/3_branch.md?id=branch-ek-elágazás)
+    - [Mik azok a branch-ek?](workshop/3_branch.md?id=mik-azok-a-branch-ek)
+    - [Hogy épül fel?](workshop/3_branch.md?id=hogy-épül-fel)
+    - [Ágak közti mozgás](workshop/3_branch.md?id=Ágak-közti-mozgás)
+    - [Mergelés](workshop/3_branch.md?id=mergelés)
+    - [Merge conflict](workshop/3_branch.md?id=merge-conlict)
 
 - Távoli Repository
 
-  - [Alapok, SSH kulcs](remote/1_basics.md)
-  - [Github](remote/2_github.md)
-  - [Issue, merge request, Fork](remote/3_issue_merge_fork.md)
+  - [Alapok és SSH kulcs](remote/1_basics.md)
+    - [Alapok](remote/1_basics.md?id=alapok)
+    - [SSH](remote/1_basics.md?id=ssh)
+    - [Saját SSH kulcs](remote/1_basics.md?id=saját-ssh-kulcs)
+      - [Linuxon / MacOS-en](remote/1_basics.md?id=linuxon-macos-en)
+      - [Windowson](remote/1_basics.md?id=windowson)
 
 - Forrás
 
